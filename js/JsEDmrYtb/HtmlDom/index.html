@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <style>
+        .intro1{
+            background-color: red;
+        }
+        .intro2{
+            background-color: violet;
+        }
+        .intro3{
+            background-color:blue;
+        }
+        #message {
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+ <!-- Javascript in html e hukmetmesidir --> 
+ <p class="intro1" id="intro1"> first paragraph</p>
+ <p class="intro2" id="intro2"> second paragraph</p>
+ <p class="intro3" id="intro3"> third paragraph</p>
+
+ <ul>
+     <li>List Item 1</li>
+     <li>List Item 2</li>
+     <li>List Item 3</li>
+     <li>List Item 4</li>
+     <li>List Item 5</li >
+ </ul>
+ <p id="message"></p>
+ <input name="customerName" type="text" value="Engin Demirog">
+
+ <h1>Try it</h1>
+ <h1 id="tryIt">Try it</h1>
+
+ <p id="nodes">
+     Node value
+ </p>
+
+ <div class="div1">
+     <p id="p1">This is p1</p>
+    <p id="p2">
+        This is p2
+    </p>
+ </div>
+
+ <script>
+     //alert("getElementByid")
+     let intro1=document.getElementById("intro1").innerHTML;
+     document.getElementById("message").innerHTML="Message "+intro1;
+
+     //getElementByTagName
+     let getAllUnorderedLists=document.getElementsByTagName("ul");
+     let getfirstUnorderedList=getAllUnorderedLists[0];
+     let allLists=getfirstUnorderedList.getElementsByTagName("li");
+//Bizim tum list item larimiz birer html objesidir
+
+console.log(allLists)//5 tane li objesi olan bir dizidir ve her bir li objeleri icerisidne bir suru key-value si olan bir objedir...
+     for (let i = 0; i < allLists.length; i++) {
+         
+         const element=allLists[i];
+       
+         //alert(element.firstChild.data)
+         console.log(element)
+         console.log(document.getElementById("message").innerHTML);
+         document.getElementById("message").innerHTML=element.innerHTML;
+         
+     }
+
+     //getElementByClassName
+     let allItemsWithClassName=document.getElementsByClassName("intro1");//Birden fazla class olabilecegi icin cogul yani array olarak gelecektir
+     console.log(allItemsWithClassName);
+     alert(allItemsWithClassName[0].innerHTML);
+     console.log(allItemsWithClassName[0].innerHTML)
+
+     //intro1 i kullanan tum p lere erismeye calisalim...
+     let allItemWithSelector=document.querySelectorAll("p.intro2")
+     alert(allItemWithSelector[0].innerHTML)
+
+     let names=document.getElementsByName("customerName");
+     alert(names[0].value);
+ </script>
+</body>
+</html>

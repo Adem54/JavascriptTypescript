@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #square{
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #rectangle{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="rectangle">
+        <div id="square"></div>
+    </div>
+
+    <script>
+        //Kare squareye tiklayinca ve rectangel a tiklayinca bir event cagiracagiz...
+        let square=document.querySelector("#square");
+        square.addEventListener("click", clickSquare);
+        function clickSquare(event){
+          event.stopPropagation();//Bunu yazinca artik square ye tiklayinca rectangelinda calismasini onune gecer....Yalnizca kendinen istenen elemente ait sonucu vermesini saglar
+            console.log("SquareClick");
+        }
+//Problem su ki square karesine tiklayinca biz aslinda hem square ye hem de rectangle a tiklamis oluyoruz ve o zamanda her iki event ta calismis oluyor..
+//Biz parametre olarak event olaylarimizda function larimizdsa parametreye birsey yazsak da yazmasak da default olarak orda event objesi vardir ve onu e ile veya event ile yazabiliriz ama default olarak o vardir biz yazsak da yazmasakda
+//Ne zaman belirtiriz biz event objesine, nesnesine ait herhangi bir methodu kullanmak istersek o zaman yazariz ama biz ister yazalim ister yazmayalim o herzaman vardir default olarak.Biz burda event nesnesinin stopPropogation yontemini kullanmak icin event i parametremize yazip kulllancagiz...
+        //rectangle divimiz square yi kapsiyor buna dikkat edelim..
+        let rectangle=document.querySelector("#rectangle");
+        rectangle.addEventListener("click", clickRectangle);
+        function clickRectangle(){
+            console.log("Rectangle Click");
+        }
+    </script>
+</body>
+</html>

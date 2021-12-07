@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <label for="sayi1">Sayi1:</label><input type="text" id="sayi1">
+    <label for="sayi2">Sayi2:</label><input type="text" id="sayi2">
+    <p style="width: 100px; height: 50px; border: 1px solid;" id="p1"   ></p>
+
+    <!-- 1.yontem direk html elementi icine gomulu kullaniriz -->
+    <button id="button2" >Button2</button>
+    <button id="button" onclick="alert('Hellooooo')">Button</button>
+
+    <p style="width: 100px; height: 50px; border: 1px solid;" id="p1"   ></p>
+    
+    <hr>
+    <input id="input" placeholder="Enter some text" name="name"/>
+<p id="values"></p>
+
+    <script>
+        //JsEventler
+        //Biz eventler i ya dinlzeri eventlistener araciligi ile  ya da handle ederiz yani o event gerceklestirginde onu karsilariz yani ona nasil bir islev gerceksitrecegimizle basa cikariz yani handle ederiz...
+//2.yontem ise button elementimizi secip ona bir addEventlistener ile buttonu dinleriz...ve ne yapacagini soyleriz...
+        let myElement=document.querySelector("#button");
+
+        let myFunction=function(){
+            alert("Merhaba");
+        }
+        myElement.addEventListener("click", myFunction)
+
+       
+        myElement.onclick=function(){
+            console.log("Merhaba");
+        }
+
+        //text box lara girilen degerleri p1 id li html elementi icine yazdiralim
+        let sayi1=document.querySelector("#sayi1");
+        let sayi2=document.querySelector("#sayi2");
+        let p1=document.getElementById("p1");
+        sayi1.addEventListener("input",topla);
+        sayi2.addEventListener("input",topla);
+        function topla(){
+           let one=parseInt(sayi1.value) || 0;//valueleri okunurken string olarak okunuyor.concetante
+            let two=parseInt(sayi2.value) || 0;
+            //Nan=>Rakam ile bilinmeyen null ya da undefined toplanirsa nan gelir
+            p1.innerHTML=one+two;        
+        }
+     
+       
+
+        //----
+         const input = document.querySelector('#input');
+         const log = document.getElementById('values');
+
+input.addEventListener('input', updateValue);
+
+function updateValue(e) {
+  log.textContent = e.target.value;
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+<body>
+  <!-- Container -->
+  <div class="container">  
+    <div><p id="text">SUBMIT FORM </p> </div>
+    <!-- Forn .inputText -->
+      <form action="/action_page.php" class="inputText">
+        <label for="fname" id="l1">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John" > <br>
+        <label for="lname" id="l2">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe" id="label2"><br><br>
+      </form>
+         <!-- Forn .inputText -->
+      <!-- Button -->
+      <button type="button" id="button" >Clicked me </button>
+      <!-- SelectColor -->
+      <form action="#" id="selectColor">
+        <label for="color">Choose a color</label>
+          <select name="colors" id="select">
+          <option value="red">RED</option>
+          <option value="blue">BLUE</option>
+          <option value="purple">PURPLE</option>
+          <option value="orange">ORANGE</option>
+          <option value="pink">PINK</option>
+        </select>
+      <br><br>
+      </form>
+       <!-- SelectColor -->
+    </div>
+  <!-- Container -->
+</body>
+<script>
+// iç içe elementler çağrıldı  
+const selectBox = document.querySelector('#selectColor');
+const button = document.querySelector('#button');
+const form = document.querySelector('.inputText');  
+const cerceve = document.querySelector('.container');
+selectBox.addEventListener('click' ,function(){
+    console.log("selectBox");    
+    })
+    //SelectBox a tiklayinca hem selectBox hem de onu kapsayan container a tiklamis oluyoruz ve eger containerin da bir click eventi varsa o da calisiyor
+form.addEventListener('click',function(){
+
+    console.log("form");
+    }) //Form a tiklayinca hem form hem de onu kapsayan container a tiklamis oluyoruz ve eger containerin da bir click eventi varsa o da calisiyor
+cerceve.addEventListener('click',function(){
+    console.log('cerceve');
+    });  
+    //Burada class=container olan div elementi içerisinde 3 farklı "id" numarası olan elementler bulunmaktadır. Container kapsayan küme, diğer elementler ise bu küme içerisindeki ayrık kümelerdir. Dolayısıyla diğer üç elemente tıklandığında class=container olan div elementini tutan çerçeve değişkeni, tıklanan elementi tutan değişken ile ekrana yazılacaktır. Örneğin form elementine tıklandığında; ekran çıktısı: form çerçeve seklinde olacaktır.
+
+
+</script>
+<script src="script.js">Merhaba</script>
+
+</html>
+
+<!-- Event Bubbling (kabarcıklanma) or Event Capturing (yakalama)? -->
+<!-- Htm dom da iki tur olay yayilimi vardir -->
+<!-- Olay yayilimi bir olay olustugunda oge sirasini tanimlamanin bir y oludur.Bir div ogesinde bir p ogesi varsa ve kullanici p ogesine tiklarsa, hangi ogenin tiklama olayini oncelikle ele almasi gerekir?
+
+Event Bubbling-Kabarciklanma- sirasindas ic ogenin olayi once islenir ve sonra dis oge islenir p ogesinin tiklama olayi once, daha sonra da div ogesinin tiklama olayi islenir.
+Dis ogenin yakalanmasinda oncelikle oge olayi ve ardindan ic kisim islenir div ogesinin tiklama olayi oncelikle, daha sonra da p ogesinin tiklama olayi islenir
+
+AddEventListener() yonetimi ile useCapture paremetresini kullanarak yayilim turunu belirleyebilirsiniz
+
+addEventListener(event, function, useCapture);
+
+Varsayilan deger Bubbling yayilimini kullanacak false dur, deger true olarak ayarlanirsa , olay Capturing yayilimina donusur
+
+document.getElementById("myp").addEventListener("click", 
+
+myFunction, true);
+
+document.getElementById("myDiv").addEventListener("click", 
+
+myFunction, true);
+
+
+-->

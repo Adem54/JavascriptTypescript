@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <style>
+        .intro1{
+            background-color: red;
+        }
+        .intro2{
+            background-color: violet;
+        }
+        .intro3{
+            background-color:blue;
+        }
+        #message {
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+ <!-- Javascript in html e hukmetmesidir --> 
+ <p class="intro1" id="intro1"> first paragraph</p>
+ <p class="intro2" id="intro2"> second paragraph</p>
+ <p class="intro3" id="intro3"> third paragraph</p>
+
+ <ul>
+     <li>List Item 1</li>
+     <li>List Item 2</li>
+     <li>List Item 3</li>
+     <li>List Item 4</li>
+     <li>List Item 5</li >
+ </ul>
+ <p id="message"></p>
+ <input name="customerName" type="text" value="Engin Demirog">
+
+ <h1>Try it</h1>
+ <h1 id="tryIt">Try it</h1>
+
+ <p id="nodes">
+     Node value
+ </p>
+
+ <div id="div1">
+     <p id="p1">This is p1</p>
+    <p id="p2">
+        This is p2
+    </p>
+ </div>
+
+   <script>
+     //  let nodeText=document.getElementById("nodes").childNodes[0].nodeValue;
+       //alert(nodeText);
+       //Bir html tagi create edelim ve uygulamaya ekleyelim
+       let heading=document.createElement("h2");
+       let node=document.createTextNode("Hello Javascript");
+       heading.appendChild(node);
+       console.log(heading);
+       let div1=document.getElementById("div1");
+       console.log(div1);
+       let p2=document.getElementById("p2");
+       console.log(p2)
+    
+      div1.insertBefore(heading, p2);
+
+      //bir html tagini remove etmek
+      alert("Remove p2")
+      div1.removeChild(p2);
+
+      //Replacing-bir tag ile baska bir tagi degistirmek
+
+      alert("Replacing")
+      let heading2=document.createElement("h1");
+       let node2=document.createTextNode("This is a replacement");
+       heading.appendChild(node2);
+    let p1=document.getElementById("p1");
+    div1.replaceChild(heading2, p1);
+   </script>
+</body>
+</html>

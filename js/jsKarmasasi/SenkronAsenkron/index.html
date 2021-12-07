@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+<body>
+<button id="btn">Tikla!</button>
+</body>
+<script>
+    let myBtn2=document.getElementById("btn");
+console.log(myBtn2);
+myBtn2.addEventListener("click",()=>{
+   
+
+    let pElem=document.createElement("p");
+    pElem.textContent="This is a newly-added paragraph";
+    document.body.appendChild(pElem);
+})
+
+
+let h1Elem=document.createElement("h1");
+    h1Elem.textContent="HEADER";
+    document.body.appendChild(h1Elem);
+//Once click eventinijn altindaki senkron olan paragraflar calisir ardindan eventlisteneer asenkron olan callback fonksa sahip olan click eventi calisacaktir....
+//Javascript kendisi senkron yapilidir ama javascript web-api lerle cok sik calisiyor dolayisi ile bir islem  yapildiginda birden fazla islem yapiliyor 
+
+</script>
+</html>

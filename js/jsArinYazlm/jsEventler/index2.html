@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+      h2{
+        margin: 20px 35%;
+      }
+        ul {
+        list-style-type: none;
+        margin: 0 20%;
+        padding: 0;
+        }
+
+        ul>li{
+            display: inline-block;
+        }
+        .hide{
+            display:none;
+            margin-top: 30px; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Simple Image Galery</h2>
+    <ul>
+        <li><a href="#" data-pic="image1" id="thumb1"><img width="200px" src="./images/thumb1.jpg" alt=""></a></li>
+        <li><a href="#" data-pic="image2" id="thumb2"><img width="200px" src="./images/thumb2.jpg" alt=""></a></li>
+        <li><a href="#" data-pic="image3" id="thumb3"><img width="200px" src="./images/thumb3.jpg" alt=""></a></li>
+        <!-- data-pic isminde attribute ler gibi kendisi olusurken default olarak gelmeyen attribute ler kendiliginden olmayip bizim sonradasn ekledigimiz attribute lerimizdir.Bunu ekleme sebebimiz dikkat edersek bu data-pic attribute leri ile alttaki img lerin id leri ayni isimde. Bizim amacimiz li>a etiketi icindeki gorsellere tikladigimiz zaman asagida su an gizledigimiz gorsellerin gorunmesini istiyoruz... -->
+    </ul>
+    <div>
+        <img width="400px" src="./images/thumb1.jpg" alt="" id="image1" class="hide">
+        <img width="400px" src="./images/thumb2.jpg" alt="" id="image2" class="hide">
+        <img width="400px" src="./images/thumb3.jpg" alt="" id="image3" class="hide">
+    </div>
+    <script>
+        let thumb1=document.getElementById("thumb1");
+        let thumb2=document.getElementById("thumb2");
+        let thumb3=document.getElementById("thumb3");
+
+        //Biz bunlara tiklayacagimiz icin tiklama sinifi olusturacagiz..
+        thumb1.addEventListener("click", showImage);
+        thumb2.addEventListener("click", showImage);
+        thumb3.addEventListener("click", showImage);
+     
+        function showImage(){
+            //Problemimiz su ki click eventi calistigi zaman her bir resme tikladigimizde sira ile resimler yanyana geliyor ama biz her resme tikladiigimzda sadece 1 resim gelsin diyoruz demekki her biz tiklamadan once ekranin temizlenmesi veya ekrana gelen resimlerin gizlenmesini garanti etmemiz  gerekiyor...Iste bu algoritmadir bunu dusunebilmek, istenilen ne ise ona uygun cozumu dusunup onu nerde bulacagini bilebilmek algoritmadir....
+            let allBigImages=document.querySelectorAll("#image1,#image2,#image3");//Tum buyuk resimleri bir tane arraya atadik
+
+            for (let i = 0; i < allBigImages.length; i++) {
+                const bigImage = allBigImages[i];
+                bigImage.className="hide";
+                
+            }
+//---Buyuk resmin gelecegi yeri her clikc event methyodu calsiacagi zaman ekrani bir temizlesin....
+
+            //THIS ILE CLICK EVENT METHODUMUZU DINAMIK YAPTIK!!!!!!!
+            //data-pic attribute value si  burda biz hangi this e tiklarsak onun valuesini aliyor yani biz image1 degerine sahip data-pice tiklarsak onu alir digerlerine tiklarsak digerini alir
+          let imgID=this.attributes["data-pic"].value;//data-pic attributune ait olan degeri al.Bizim burda 3 tane attributumuz var hangisini alacak iste hangisi kullanilirsa onu alacak this ifadesi sayesinde...Burasi muthis bir best-practise....ortak bir click event i icinde this kullandgin zaaman this demek sen hangisine tiklarsak this o oluyor....ISTE BURASI HARIKA.....
+          let picture=document.getElementById(imgID);//BURDA imgID nedir ornegin biz thumb1 id li resme tiklarsak id image1 olur ve bu image1 id si de neye esitti ayni zamanda asagidaki buyuk img lerden ilkinin id sine esit idi zaten biz bunu yapabilmek icin alttaki baslangicta gizli olan buyuk resimlerin id leri ile kucuk resimlerin ustteki kucuk resimlerin data-pic attribute valuelerini esit verdik
+          if(picture.className==="hide"){
+              picture.className="";//tiklayinca hide class ini kullanmasin diyoruz...super bir yontem yani tiklayinca komple bir class i kullansin veya kullanmasin diyebiliyoruz bu sekiulde.....
+          }else{
+              picture.className="hide";
+          }
+        }
+    </script>
+</body>
+</html>

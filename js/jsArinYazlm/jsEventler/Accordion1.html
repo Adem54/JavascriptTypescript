@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="accordion">
+        <button id="button">Section-1</button>
+        <h2>Section 1</h2>
+            <div id="section1">
+                <p id="p1"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rem dignissimos assumenda magni consectetur, vero maxime dolorum. Eaque quod sunt nesciunt! Dolore ut omnis eum dignissimos illum repudiandae eius numquam. </p>
+            </div>
+            <button id="button2">Section-2</button>
+        <h2>Section 2</h2>
+            <div id="section2">
+                <p id="p2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate omnis cum pariatur voluptates repellat dolor consequatur nobis officia voluptatum corrupti quia consequuntur perferendis laboriosam, distinctio, laborum et nesciunt cupiditate eaque.</p>
+            </div>
+            <button id="button3">Section-3</button>
+        <h2>Section 3  </h2>
+            <div id="section3">
+                <p id="p3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi maiores nemo, quidem rem laborum blanditiis quisquam reprehenderit aspernatur pariatur culpa a eveniet, architecto maxime quasi provident earum hic, ex unde?</p>
+            </div>
+      
+    </div>
+    
+
+    <script>
+
+        //------------------------------
+        let section1=document.querySelector("#section1");
+        let section1P=document.querySelector("#section1 p");
+        let p1=document.getElementById("p1");
+        p1.style.color="red";
+          
+        let section2=document.querySelector("#section2");
+        let section3=document.querySelector("#section3");
+        let button=document.querySelector("#button");
+
+        let myFunction=function() {
+         p1.style.color="blue";
+            if( p1.style.display==="none"){
+              p1.style.display="block";
+          }else{
+              p1.style.display="none"
+
+          }
+        }
+
+        let myFunction2=function() {
+         
+            if( p2.style.display==="none"){
+              p2.style.display="block";
+          }else{
+              p2.style.display="none"
+
+          }
+        }
+
+        let myFunction3=function() {
+         
+         if( p3.style.display==="none"){
+           p3.style.display="block";
+       }else{
+           p3.style.display="none"
+
+       }
+     }
+
+        button.addEventListener("click",myFunction)
+        button2.addEventListener("click",myFunction2)
+        button3.addEventListener("click",myFunction3)
+    </script>
+</body>
+</html>

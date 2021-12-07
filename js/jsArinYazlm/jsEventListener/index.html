@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+     #div1, #div2{
+         margin:100px 100px;
+     }
+
+     #values, #values2{
+         background-color: aqua;
+         padding: 15px;
+         width: 170px;
+     }
+    </style>
+  </head>
+  <body>
+      <div id="div1">
+    <input id="input" placeholder="Enter some text" name="name" />
+    <p id="values"></p>
+
+</div>
+<div id="div2">
+   <!-- <input id="input2"  placeholder="Enter some text" name="name" />-->
+    <label for="input2">Sayi1:</label><input type="text" id="input2">
+   <!-- <p id="values2"></p>  -->
+    <p style="width: 100px; height: 50px; border: 1px solid;" id="values2"   ></p>
+</div>
+
+<hr>
+<hr>
+
+<label for="sayi1">Sayi1:</label><input type="text" id="sayi1">
+<label for="sayi2">Sayi2:</label><input type="text" id="sayi2">
+
+<!-- 1.yontem direk html elementi icine gomulu kullaniriz -->
+<button id="button2" >Button2</button>
+<button id="button" onclick="alert('Hellooooo')">Button</button>
+
+<p style="width: 100px; height: 50px; border: 1px solid;" id="p1"   ></p>
+
+    <script>
+      //----
+      const input = document.querySelector("#input");
+      const log = document.getElementById("values");
+
+      input.addEventListener("input", updateValue);
+
+      function updateValue(e) {
+        log.textContent = e.target.value; 
+      }
+
+      //E burda event nesnesidir ve herhangi bir olay gerceklestiginde bir olay nesnesi olusmus oluyor ve event nesnesi icerisinde bircok ozelligi barindiriyor...
+
+
+      //--------------------------------
+      let input2 = document.querySelector("#input2");
+      let p2 = document.getElementById("values2");
+      console.log(input2);
+      console.log(input2.value);
+      console.log(p2.innerHTML)
+
+      input.addEventListener("input", updateValue2);
+  
+
+      function updateValue2() {
+     
+        
+   
+        p2.innerHTML = input2.value; 
+      }
+
+     
+      console.log(p2.innerHTML)
+
+      //------------------
+
+        //text box lara girilen degerleri p1 id li html elementi icine yazdiralim
+        let sayi1=document.querySelector("#sayi1");
+        let sayi2=document.querySelector("#sayi2");
+        let p1=document.getElementById("p1");
+       
+
+        sayi1.addEventListener("input",topla);
+        sayi2.addEventListener("input",topla);
+        console.log("adsfas: "+ typeof(sayi1.value));
+        
+        function topla(){
+            p1.innerHTML=sayi1.value;
+          // let one=sayi1.value;//valueleri okunurken string olarak okunuyor.concetante
+           // let two=parseInt(sayi2.value) || 0;
+            //Nan=>Rakam ile bilinmeyen null ya da undefined toplanirsa nan gelir
+            //p1.innerHTML=one+two;        
+        }
+     
+       
+
+    </script>
+  </body>
+</html>

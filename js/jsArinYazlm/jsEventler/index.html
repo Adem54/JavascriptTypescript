@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #square{
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #rectangle{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="rectangle">
+        <div id="square"></div>
+    </div>
+
+    <script>
+        square.addEventListener("click", clickSquare);
+        function clickSquare(event){
+           console.log( event.target);//Tikladigimiz elementi gosteriyor bize,square id li elementi veriyor hangi elemente event olusturdu isek onu verir...BU CON ONEMLI COK KULLANIYORUZ...
+           //<div id="square"></div>
+           console.log(event.clientX,event.clientY);
+           event.target.style.backgroundColor="aqua";
+           event.stopPropagation();
+            console.log("SquareClick");
+        }
+        let rectangle=document.querySelector("#rectangle");
+        rectangle.addEventListener("click", clickRectangle);
+      //  rectangle.addEventListener("click", clickRectangle, true);//3.bir parametre ile true verirsek o zaman square ye basinca ilk rectangel calisir sonra square calisacaktir..Normalde once squareyi calistirir sonra da rectangel i calistiriyor ama siralamayi 3.bir parametre ile degistirebiliyoruz...
+        function clickRectangle(e){
+            console.log(e.target);// <div id="rectangle"><div id="square"></div> </div>
+            console.log(this);//<div id="rectangle"><div id="square"></div> </div>
+          console.log("Rectangle Click");
+        }
+     
+    </script>
+</body>
+</html>

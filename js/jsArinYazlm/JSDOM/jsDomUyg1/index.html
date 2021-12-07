@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM & BOM</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Uygulamali Javascript Dersleri</h1>
+        <img name="slide" src="" alt="" width="400" height="200">
+    </div>
+
+    <script>
+    
+       let i=0;
+       let images=["https://source.unsplash.com/random", "https://source.unsplash.com/random","https://source.unsplash.com/random", "https://source.unsplash.com/random","https://source.unsplash.com/random"];
+       let duration=2000;//2sn demeektir degisme zamani
+       function slideImg(){
+           //slide img deki name den geliyor
+           document.slide.src=images[i];
+           if(i<images.length-1){
+            i++;
+           }else{
+            i=0;
+           }
+           setTimeout("slideImg()", 2000)
+       }
+
+       
+       
+
+       window.onload=slideImg;
+    </script>
+</body>
+</html>

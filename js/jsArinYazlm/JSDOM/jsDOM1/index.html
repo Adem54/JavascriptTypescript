@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM & BOM</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1 id="h1">Uygulamali Javascript Dersleri</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+    <ul class="ul">
+        <li class="li li-1">Lorem 1</li>
+        <li class="li li-2">Lorem 2</li>
+        <li class="li li-3">Lorem 3</li>
+    </ul>
+
+    <hr>
+
+    <h1 id="myH1">Uygulamali Javascript Dersleri</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+    <ul class="ul">
+        <li class="li li-1">Lorem 1</li>
+        <li class="li li-2">Lorem 2</li>
+        <li class="li li-3">Lorem 3</li>
+    </ul>
+    
+     <script>
+         //En onemli dom nesnemiz documenttir bizim icin
+  let h1=document.getElementById("h1")
+   console.log(h1);
+   //Alttaki her ucu ile de sectigimiz bir js etiketinin icerigini degistirebiliriz
+   h1.textContent="Javacript DOM";   
+   h1.innerText="Javascript Document Object Model";
+   h1.innerHTML="Document Object Model Javascript";
+   //h1 etiketi icine h5 etiketini yerlestirdi
+   h1.innerHTML="<h5>Kucuk Baslik</h2>";
+   console.log(h1);
+      
+   let liElements=document.getElementsByClassName("li-1");
+   console.log(liElements);//Sectigimiz class tan 1 tane olsa bile, bize dizi icinde gelir dolayisi ile biz istedigimiz elemente ulasmak icin yine dizinin 0. yani ilk elementini cagirmaliyiz...
+   
+   //QuerySelector ile secim yapma
+   //id ve class ta isaretleri ile yazarak seceriz..
+   let myHeader=document.querySelector("#myH1");
+   console.log(myHeader);
+   //queryselector default olarak liste olarak bulunan elemenlterin 1.sini secer, default olarak
+   //querySelector parantezi icine aynen css secimlerinde yaptigimiz gibi seceriz..
+   let myLiEl=document.querySelector(".li");
+   console.log(myLiEl);
+   let myLastLi=document.querySelector(".li:last-child");
+   console.log(myLastLi);
+   let middleChild=document.querySelector(".li:nth-child(2)")
+   console.log(middleChild)
+
+   //BU KULLANIM MUTHIS KOLAYLIK SAGLIYOR.. VE ISTEDIGIMIZ HER ELEMENTE DIREK CSS SECICISI UZERINDEN VEYA HTML KODUNU SECIP SAGA TIKALYIP KOPYALA VE SECIYI KOPYALA DERSEK DE DIREK SECEBILIYORUZ...
+   //DAHA PRATIK KULLANABILMEK ICIN GIDIP CSS KODLARINDAN YA DA ARKA PLANDA INSPECT TEKI HTML KODUNDAN SECMEK ISTEDIGIM KODU SAGA TIKLAYARAK CSS SELECTOR UNU KOPYALAYIP GELIP DIREK QUERYSELECTOR ICINE YAZARAK SECEBILIYORUZ....
+   
+   myLastLi.style.backgroundColor="red";
+   middleChild.style.color="blue";
+   
+
+   let myAllLiElements=document.querySelectorAll(".li");//Tum li class ismini alan li leri toplayip bize getirir...
+   console.log(myAllLiElements);
+     </script>
+</body>
+</html>
+
+<!-- 
+        DOM-Document object model
+Document=> demek bizim karsimiza gelen html sayfamizdir sitenin tamami degil karsimiza gelen html kodlarindan olusan sayfadan bahsediyor yani..
+Object=>Sayfamizin, dokumanimizin icinde bulunan html yapilarinin tamami nesnedir,objedir, h1, p etiketi, ul,li liste, body, html bunlarin hepsi objedir.Javascript tum html taglarina nesne olarak bakar html ile arasinda iliski kurabilmek icin
+Yani html kodunda bulunan her bir parcaya onlar nesne olarak bakariz daha dogrusu javascript onlari nesne olarak gorur ki onlar uzerinde islemler yapabilsin
+Modelleme -kavramsallastirma, karmasik bir konuyu daha basit hale getirmek
+MOdelleme de html kodlarimizin bir hiyerarsik sira icinde node lar halinde siralanmasidir
+hmtl en tepede onun altinda head ve body etiketi body altinda h1,p ve ul etkiket ul altinda da li etiketleri bulunur. Head etiketi altinda ise title etiketi bulunur
+Html etiketlerini sema haline getirme yani hiyerarsik bir sekilde semaya dokme de modelleme kapsamindadir
+
+Javascript html ile iletisime gecmek icin neden DOM a ihtiyac duyuyor.Cunku mesela h1 uzerinde bir islem yapacaksa once o h1 i secebilmesi lazm dolayisi ile DOM a ihtyac duyuyor..
+DOM dedigimiz kavram tum sayfamizi kapsiyor yani document dedigimiz ve document te kendisi de bir nesnedir ki document in uzerinde ne var peki onun uzerinde ise window nesnesi vardir...
+BOM dedgimiz kavram ise-Browser Object Model-Bu kavram ise sadece bulundugumuz sayfadan tab dan ibaret degil ayni zamandas adres cubugu , farkli tablar vs hepsini kapsar
+
+Element node larimiz html etiketleri ile ortusuyor.Node olarak dusundugumuzde sadece html etiketleri kendisi node degil, class isimleri attribute nodes, text ler text nodes
+Element node, attribute node ve text node onemli bizim icin
+Element node-html taglarina denk geliyor
+Attribute node lar ise etiketlerini icindeki attributlere karsilik geliyor
+
+     -->

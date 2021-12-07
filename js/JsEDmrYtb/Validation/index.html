@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- 
+        Validation
+Javascriptoin kendi icinden gelen bazi keyworler ile biz validation islemini yapabiliriz...
+
+Tabi ki bu islemler formlarda gerceklesiyor...veri girme islemleri formlar araciligi ile oldugu icin...
+1-disabled
+2-Readonly-sadece okunabilir
+3-Max-en fazla
+4-Min
+5-Pattern(e.g[A-Za-z{3}])-ozel bir pattern,regular expression ile birsey verip de ona dikkat edilmesini isteyebiliriz sadece 3 karakter girsin
+6-Required--zorunlu
+7-Type--tipini belli et
+8-Max-length--en fazla uzunlugunu belirtirsin...
+9-Novalidate
+
+     -->
+<p>Enter a number</p>
+<!-- Ne zaman ki biz type number ve max ve min kuralini koyunca iste biz validation islemini kendi icinde default gelen keyword ler ile yapiyoruz...  
+<input id="numberBox"  type="number" max="10" min="5" >
+<input id="numberBox"  type="text" pattern="[A-Za-z{3}]"
+alfa nummerik 3 karakter girilsin diye ozel bir pattern yazilmis reguler expression ile ve text olsun diyoruz burda ornegin.    ..
+<input id="numberBox"  type="text"  maxlength="5" >
+
+readonly de verebiliirzi bunu da value yi kendimizi verip degistirilmesini istemezsek yapilir...
+
+-->
+<input id="numberBox"  type="text" value="abc" readonly >
+<button onclick="validate()">Send</button>
+<p id="demo"></p>
+</body>
+
+<script>
+    function validate(){
+    let numberEntered=document.getElementById("numberBox");
+    //Girilen degerin kurallara uygun olup olmadigini bir method vasitasi ile cek ediyoruz....
+    if(numberEntered.checkValidity()==false){
+        document.getElementById("demo").innerHTML=numberEntered.validationMessage;
+    }else{
+        document.getElementById("demo").innerHTML="input OK";
+    }
+    }
+</script>
+
+</html>
